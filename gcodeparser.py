@@ -1,42 +1,59 @@
-
+"""GCode parser module."""
 
 class Move:
-    def __init__(self, position = (0, 0, 0), onlyMove = False):
-        self.x:float = position[0]
-        self.y:float = position[1]
-        self.z:float = position[2]
-        self.OnlyMove = onlyMove
+    """Represents a move in GCode."""
+
+    def __init__(self, position=(0, 0, 0), only_move=False):
+        """Initialize Move with position and only_move flag."""
+        self.x: float = position[0]
+        self.y: float = position[1]
+        self.z: float = position[2]
+        self.only_move = only_move
+
     def __str__(self) -> str:
-        return f"x: {self.x}, y: {self.y}, z:{self.z}, OnlyMove:{self.OnlyMove}"
-    
-    def GetPosition(self):
-        return (self.x,self.y,self.z)
-    def changeX(self, deltaX):
-        self.x += deltaX
-    def changeY(self, deltaY):
-        self.x += deltaY
-    def changeZ(self, deltaZ):
-        self.x += deltaZ
+        """Return string representation of the move."""
+        return f"x: {self.x}, y: {self.y}, z: {self.z}, OnlyMove: {self.only_move}"
+
+    def get_position(self):
+        """Get the current position as a tuple."""
+        return self.x, self.y, self.z
+
+    def change_x(self, delta_x):
+        """Change the X coordinate by delta_x."""
+        self.x += delta_x
+
+    def change_y(self, delta_y):
+        """Change the Y coordinate by delta_y."""
+        self.y += delta_y
+
+    def change_z(self, delta_z):
+        """Change the Z coordinate by delta_z."""
+        self.z += delta_z
+
 
 class GCodeParser:
+    """Parser for GCode files."""
+
     def __init__(self) -> None:
+        """Initialize the GCodeParser."""
         pass
 
-    def readFileLines(self) -> list[str]:
-        with open("test1.gcode",'r') as file:
-            lines = file.readlines()
+    def read_file_lines(self) -> list[str]:
+        """Read lines from a GCode file."""
+        with open("resources/test1.gcode", 'r', encoding='utf-8') as file:
+            lines = file.readlines()  # pylint: disable=all
         return lines
 
-    def filter_lines(self,lines:list[str]) -> list[str]:
-        """function returns comments, end line sign and command not starts with G
+    def filter_lines(self, lines: list[str]) -> list[str]:
+        """Return filtered lines that start with G.
 
         Args:
-            lines (list[str]): linie wczytane z pliku
+            lines (list[str]): Lines read from a file.
 
         Returns:
-            list[str]: przefiltrowane dane
+            list[str]: Filtered lines.
         """
-        filtered =[]
+        filtered = []
         for line in lines:
             if line.startswith(';'):
                 continue
@@ -47,9 +64,8 @@ class GCodeParser:
                 filtered.append(line)
         return filtered
 
-
-
-    def filter_v2(self,lines:list[str]):
+    def filter_v2(self, lines: list[str]):
+        """Further filter lines by removing lines ending with F."""
         re = []
         for line in lines:
             l = line.split(" ")
@@ -61,64 +77,66 @@ class GCodeParser:
             re.append(line)
         return re
 
-    def GetFilteredLines(self):
-        return self.filter_v2(self.filter_lines(self.readFileLines()))
+    def get_filtered_lines(self):
+        """Get filtered lines from a GCode file."""
+        return self.filter_v2(self.filter_lines(self.read_file_lines()))
 
-    def ConvertGCodeToList(self, list):
-        startX=0
-        startY=0
-        is_first_XY = True
+    def convert_gcode_to_list(self, gcode_list):
+        """Convert GCode to a list of Move objects."""
+        start_x = 0
+        start_y = 0
+        is_first_xy = True
         i = 0
-        while (is_first_XY):
-            line = list[i].split(" ")
-            i+=1
-            if (line[0] != "G1"):
+        while is_first_xy:
+            line = gcode_list[i].split(" ")
+            i += 1
+            if line[0] != "G1":
                 continue
-            if (len(line) != 3):
+            if len(line) != 3:
                 continue
-            if (line[1].startswith("X") and line[2].startswith("Y")):
-                startX = float(line[1][1:])
-                startY = float(line[2][1:])
-                is_first_XY = False
-                print(f"X:{startX},Y:{startY}")
+            if line[1].startswith("X") and line[2].startswith("Y"):
+                start_x = float(line[1][1:])
+                start_y = float(line[2][1:])
+                is_first_xy = False
+                print(f"X: {start_x}, Y: {start_y}")
                 continue
 
-        out = [Move((0,0,0),True)]
-        for order in list:
-            move = Move()
-            ord = order.split(" ")
-            if ord[0] != "G1":
+        out = [Move((0, 0, 0), True)]
+        for order in gcode_list:
+            move = Move() # pylint: disable=all
+            ord_parts = order.split(" ")
+            if ord_parts[0] != "G1":
                 continue
-            if ord[1].startswith("Z"):
+            if ord_parts[1].startswith("Z"):
                 move.x = out[-1].x
                 move.y = out[-1].y
-                move.z = float(ord[1][1:])
-            elif ord[1].startswith("X"):
-                if (len(ord) == 3):
-                    move.OnlyMove = True
-                    move.x = startX - float(ord[1][1:])
-                    move.y = startY - float(ord[2][1:])
+                move.z = float(ord_parts[1][1:])
+            elif ord_parts[1].startswith("X"):
+                if len(ord_parts) == 3:
+                    move.only_move = True
+                    move.x = start_x - float(ord_parts[1][1:])
+                    move.y = start_y - float(ord_parts[2][1:])
                     move.z = out[-1].z
-                if (len(ord) == 4):
-                    move.OnlyMove = False
+                if len(ord_parts) == 4:
+                    move.only_move = False
                     move.z = out[-1].z
-                    move.x = startX - float(ord[1][1:])
-                    move.y = startY - float(ord[2][1:])
-            else :
+                    move.x = start_x - float(ord_parts[1][1:])
+                    move.y = start_y - float(ord_parts[2][1:])
+            else:
                 continue
             out.append(move)
         return out
 
-
-
-    def save_lines(self,lines:list[str]):
-        with open("out.gcode",'w') as file:
+    def save_lines(self, lines: list[str]): # pylint: disable=all
+        """Save lines to a GCode file."""
+        with open("out.gcode", 'w', encoding='utf-8') as file:
             for line in lines:
-                file.write(line+"\n")
+                file.write(line + "\n")
+
 
 if __name__ == "__main__":
-    par = GCodeParser()
-    lines = par.GetFilteredLines()
-    out = par.ConvertGCodeToList(lines)
-    for move in out[:100]:
+    parser = GCodeParser()
+    lines = parser.get_filtered_lines()
+    moves = parser.convert_gcode_to_list(lines)
+    for move in moves[:100]:
         print(move)

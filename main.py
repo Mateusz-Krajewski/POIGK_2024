@@ -1,7 +1,7 @@
 from ursina.prefabs.first_person_controller import FirstPersonController
 from ursina.shaders import lit_with_shadows_shader
-from ursina import *
-from gcodeparser import GCodeParser, Move
+from ursina import * # pylint: disable=all
+from gcodeparser import GCodeParser, Move # pylint: disable=all
 
 ###
 SLOWER = 100
@@ -15,10 +15,12 @@ Entity.default_shader = lit_with_shadows_shader
 ground = Entity(model='plane', collider='box', scale=64, texture='grass', texture_scale=(4,4))
 
 editor_camera = EditorCamera(enabled=False, ignore_paused=True)
-player = FirstPersonController(model='cube', z=-10, color=color.orange, origin_y=-.5, speed=8, collider='box')
+player = FirstPersonController(model='cube',
+                                z=-10, color=color.orange, origin_y=-.5, speed=8, collider='box')
 player.collider = BoxCollider(player, Vec3(0,1,0), Vec3(1,2,1))
 
-pomel = Entity(model='cube', position=(0,0,0), scale=(.2,1,.2), origin_z=-.5, color=color.red, on_cooldown=False)
+pomel = Entity(model='cube', position=(0,0,0),
+                            scale=(.2,1,.2), origin_z=-.5, color=color.red, on_cooldown=False)
 
 
 il = 0
@@ -46,7 +48,7 @@ for i in range(0,1*SLOWER):
 def update():
     global il
     if len(do) > il:
-        pomel.position = do[il].GetPosition()
+        pomel.position = do[il].get_position()
         Entity(model='cube', position=(pomel.position), scale=(0.1,0.1,0.1),color=color.white)
         il+=1
     pass

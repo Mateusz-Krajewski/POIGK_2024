@@ -1,0 +1,44 @@
+name: Pylint Check
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  pylint_check:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+      
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.11'
+        
+    - name: Install dependencies
+      run: pip install pylint
+      
+    - name: Run pylint
+      run: |
+        py_files=$(find . -name "*.py")
+        total_errors=0
+        
+        for file in $py_files; do
+          errors=$(pylint --max-line-length=120 $file | wc -l)
+          if [[ $errors -gt 1 ]]; then
+            total_errors=$((total_errors + errors - 1))
+          fi
+        done
+        
+        if [[ $total_errors -gt 0 ]]; then
+          echo "Too many errors ($total_errors), failing the build."
+          exit 1
+        else
+          echo "Acceptable number of errors ($total_errors)."
+        fi
