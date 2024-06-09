@@ -1,11 +1,21 @@
-from gcodeparser import Move
+from Move import Move
 import math
 
 class Generator():
+    """Generator Objects Ready to print by 3D Priner
+    """
     def __init__(self, slower) -> None:
         self.slower = slower
 
     def GenerateCube(self, a) ->list[Move]:
+        """Function generates Moves to create Cube 
+
+        Args:
+            a (int): size of Cube
+
+        Returns:
+            list[Move]: moves list
+        """
         YOFFSET = 1.15
         do = []
         lastMove= Move()
@@ -40,6 +50,16 @@ class Generator():
 
         return do
     def GenerateSphere(self, radius: float, num_layers: int, num_points_per_layer: int) -> list[Move]:
+        """Function to generate Moves list to create a Sphare
+
+        Args:
+            radius (float): radius of sphere
+            num_layers (int): nomber of layers in Y
+            num_points_per_layer (int): num of points in layer XZ
+
+        Returns:
+            list[Move]: moves list
+        """
         YOFFSET = 1.15
         do = []
         for i in range(num_layers):
