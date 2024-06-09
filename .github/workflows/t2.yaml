@@ -19,7 +19,7 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install sphinx  # Upewnij się, że masz plik requirements.txt z potrzebnymi pakietami
+        pip install sphinx ursina  # Upewnij się, że masz plik requirements.txt z potrzebnymi pakietami
 
     - name: Build documentation
       run: |
