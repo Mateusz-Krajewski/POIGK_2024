@@ -1,130 +1,1075 @@
-<!DOCTYPE html>
 
-<html lang="en" data-content_root="./">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.10.0" />
+<title>Game API documentation</title>
+<meta name="description" content="" />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>Game</code></h1>
+</header>
+<section id="section-intro">
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">import random
+from ursina import Entity, color, Ursina, BoxCollider, Vec3, Button, DirectionalLight, Sky, EditorCamera, mouse, application, InputField
+from ursina.shaders import lit_with_shadows_shader
+from ursina.prefabs.first_person_controller import FirstPersonController
 
-    <title>Game module &#8212; POiGK_2024 1.0 documentation</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=d1102ebc" />
-    <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=12dfc556" />
-    <script src="_static/documentation_options.js?v=f2a433a1"></script>
-    <script src="_static/doctools.js?v=9a2dae69"></script>
-    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" />
-   
-  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
-  
 
-  
-  
+import math
 
-  </head><body>
-  
+class Move:
+    &#34;&#34;&#34;Represents a move in GCode.&#34;&#34;&#34;
 
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          
+    def __init__(self, position=(0, 0, 0), only_move=False):
+        &#34;&#34;&#34;Initialize Move with position and only_move flag.&#34;&#34;&#34;
+        self.x: float = position[0]
+        self.y: float = position[1]
+        self.z: float = position[2]
+        self.only_move = only_move
 
-          <div class="body" role="main">
-            
-  <section id="module-Game">
-<span id="game-module"></span><h1>Game module<a class="headerlink" href="#module-Game" title="Link to this heading">¶</a></h1>
-<dl class="py class">
-<dt class="sig sig-object py" id="Game.Game">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">Game.</span></span><span class="sig-name descname"><span class="pre">Game</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">slower</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Game.Game" title="Link to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<dl class="py method">
-<dt class="sig sig-object py" id="Game.Game.Cursor">
-<span class="sig-name descname"><span class="pre">Cursor</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Game.Game.Cursor" title="Link to this definition">¶</a></dt>
-<dd><p>Enable / Disable Cursor</p>
-</dd></dl>
+    def __str__(self) -&gt; str:
+        &#34;&#34;&#34;Return string representation of the move.&#34;&#34;&#34;
+        return f&#34;x: {self.x}, y: {self.y}, z: {self.z}, OnlyMove: {self.only_move}&#34;
 
-<dl class="py method">
-<dt class="sig sig-object py" id="Game.Game.menu">
-<span class="sig-name descname"><span class="pre">menu</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Game.Game.menu" title="Link to this definition">¶</a></dt>
-<dd><p>function Wchich is responsible for generate menu view</p>
-</dd></dl>
+    def get_position(self):
+        &#34;&#34;&#34;Get the current position as a tuple.&#34;&#34;&#34;
+        return self.x, self.y, self.z
 
-<dl class="py method">
-<dt class="sig sig-object py" id="Game.Game.start_gen_cube">
-<span class="sig-name descname"><span class="pre">start_gen_cube</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Game.Game.start_gen_cube" title="Link to this definition">¶</a></dt>
-<dd><p>Function responsible for disable menu, and start generating cube</p>
-</dd></dl>
+    def change_x(self, delta_x):
+        &#34;&#34;&#34;Change the X coordinate by delta_x.&#34;&#34;&#34;
+        self.x += delta_x
 
-<dl class="py method">
-<dt class="sig sig-object py" id="Game.Game.start_gen_sphere">
-<span class="sig-name descname"><span class="pre">start_gen_sphere</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Game.Game.start_gen_sphere" title="Link to this definition">¶</a></dt>
-<dd><p>Funcrion responsible for disable menu, and start generating Sphere</p>
-</dd></dl>
+    def change_y(self, delta_y):
+        &#34;&#34;&#34;Change the Y coordinate by delta_y.&#34;&#34;&#34;
+        self.y += delta_y
 
-</dd></dl>
+    def change_z(self, delta_z):
+        &#34;&#34;&#34;Change the Z coordinate by delta_z.&#34;&#34;&#34;
+        self.z += delta_z
 
+class Generator():
+    &#34;&#34;&#34;Generator Objects Ready to print by 3D Priner
+    &#34;&#34;&#34;
+    def __init__(self, slower) -&gt; None:
+        self.slower = slower
+
+    def GenerateCube(self, a) -&gt;list[Move]:
+        &#34;&#34;&#34;Function generates Moves to create Cube 
+
+        Args:
+            a (int): size of Cube
+
+        Returns:
+            list[Move]: moves list
+        &#34;&#34;&#34;
+        YOFFSET = 1.15
+        XZOFFSET = 1
+        do = []
+        lastMove= Move()
+        # Generowanie dolnej ściany
+        for i in range(0, a * self.slower):
+            for j in range(0, a * self.slower):
+                move = Move((i / self.slower,  YOFFSET, j / self.slower))
+                do.append(move)
+
+        for i in range(0, a * self.slower):
+            for _ in range(0, a * self.slower):
+                move = Move((lastMove.x + XZOFFSET / self.slower, (i / self.slower)+ YOFFSET, lastMove.z))
+                do.append(move)
+                lastMove = move
+            for _ in range(0, a * self.slower):
+                move = Move((lastMove.x, (i / self.slower)+ YOFFSET, lastMove.z + XZOFFSET / self.slower))
+                do.append(move)
+                lastMove = move
+            for _ in range(0, a * self.slower):
+                move = Move((lastMove.x - XZOFFSET / self.slower,(i / self.slower)+ YOFFSET, lastMove.z))
+                do.append(move)
+                lastMove = move
+            for _ in range(0, a * self.slower):
+                move = Move((lastMove.x, (i / self.slower)+ YOFFSET, lastMove.z - XZOFFSET / self.slower))
+                do.append(move)
+                lastMove = move
+
+        # Generowanie górnej ściany
+        for i in range(0, a * self.slower + 1):
+            for j in range(0, a * self.slower +1):
+                move = Move(((i / self.slower), a+YOFFSET, j / self.slower))
+                do.append(move)
+
+        return do
+    def GenerateSphere(self, radius: float, num_layers: int, num_points_per_layer: int) -&gt; list[Move]:
+        &#34;&#34;&#34;Function to generate Moves list to create a Sphare
+
+        Args:
+            radius (float): radius of sphere
+            num_layers (int): nomber of layers in Y
+            num_points_per_layer (int): num of points in layer XZ
+
+        Returns:
+            list[Move]: moves list
+        &#34;&#34;&#34;
+        YOFFSET = 1.15
+        do = []
+        for i in range(num_layers):
+            phi = math.pi * (i / (num_layers - 1))  # Ustal phi na podstawie warstwy
+            for j in range(num_points_per_layer):
+                theta = 2 * math.pi * (j / num_points_per_layer)
+                x = radius * math.sin(phi) * math.cos(theta) +1
+                y = radius * math.cos(phi) + YOFFSET+1
+                z = radius * math.sin(phi) * math.sin(theta) + 1
+                move = Move((x, y, z))
+                do.append(move)
+        do.reverse()
+        return do
+
+class Pomel(Entity):
+    &#34;&#34;&#34;Pomel class is responsible for Move Pomel Model and Generate printing efect
+
+    Args:
+        do: (list[Move]): moves lists
+        slower: (int): change print resolution
+    &#34;&#34;&#34;
+    def __init__(self,do:list[Move],slower, **kwargs):
+        self.frames = 0
+        self.do = do
+        self.il = 0
+        self.speedDivision = 2
+        self.slower = slower
+        self.pause = False
+        self.entitis: list[Entity] = []
+        super().__init__(model=&#39;cube&#39;, position=(0.5, 1.15,0.5),
+                                    scale=(.1,.1,.1), origin_z=0, color=color.red, on_cooldown=False)
+    
+    def ChangePause(self):
+        &#34;&#34;&#34;change pause state
+        &#34;&#34;&#34;
+        self.pause = not self.pause
+
+    def dropEntity(self):
+        &#34;&#34;&#34;Delete printed items func
+        &#34;&#34;&#34;
+        for e in self.entitis:
+            e.disable()
+
+    def update(self):
+        &#34;&#34;&#34;Function called by ursina engine. They change position of Pomel and print Cube
+        &#34;&#34;&#34;
+        if not self.pause:
+            if self.frames &gt; self.speedDivision:
+                if len(self.do) &gt; self.il:
+                    self.set_position(self.do[self.il].get_position())
+                    if not self.do[self.il].only_move:
+                        pos = self.position
+                        pos[0] += 0
+                        pos[1] -= 0.1
+                        pos[2] += 0
+                        self.entitis.append(Entity(model=&#39;cube&#39;, position=(pos), scale=(1/self.slower,1/self.slower,1/self.slower),color=color.white))
+                    self.il+=1
+                else:
+                    self.disable()
+                self.frames=0
+            self.frames+=1
+
+class Game():
+    def __init__(self, slower) -&gt; None:
+        &#34;&#34;&#34;Main class Of the game, they initialize all of Entities
+
+        Args:
+            do (list[Move]): list of moves to get by Pomel class
+            slower (int): multiply quantity of elements in printing part
+        &#34;&#34;&#34;
+        self.slower = slower
+        self.do = []
+        random.seed(0)
+        self.app = Ursina()
+        Entity.default_shader = lit_with_shadows_shader
+        self.ground = Entity(model=&#39;plane&#39;, collider=&#39;box&#39;, scale=64, texture=&#39;grass&#39;, texture_scale=(4,4))
+        self.table = Entity(model=&#39;plane&#39;, collider=&#39;box&#39;, color=color.gray,position=(1,1,1),scale=(4,0.1,4))
+
+        self.editor_camera = EditorCamera(enabled=False, ignore_paused=True)
+        self.player = FirstPersonController(model=&#39;cube&#39;,
+                                        z=-10, color=color.orange, origin_y=-0.5, speed=8, collider=&#39;box&#39;)
+        self.player.collider = BoxCollider(self.player, Vec3(0,1,0), Vec3(1,2,1))
+        self.pause_handler = Entity(ignore_paused=True, input=self.__pause_input)
+        self.sun = DirectionalLight()
+        self.sun.look_at(Vec3(1,-1,-1))
+        self.sky = Sky()
+        self.pomel = None
+        self.menu_is_on =False
+        self.menu()
+        self.app.run()
+
+    def Cursor(self):
+        &#34;&#34;&#34;Enable / Disable Cursor
+        &#34;&#34;&#34;
+        self.editor_camera.enabled = not self.editor_camera.enabled
+        self.player.visible_self = self.editor_camera.enabled
+        mouse.locked = not self.editor_camera.enabled
+        self.editor_camera.position = self.player.position
+
+    def menu(self):
+        &#34;&#34;&#34;function Wchich is responsible for generate menu view
+        &#34;&#34;&#34;
+        if (not self.menu_is_on):
+            self.Cursor()
+            self.gen_cube_but = Button(
+                color = color.gray,
+                y = 0.1,
+                scale = (.1,.1),
+                text=&#34;Cube&#34;,
+                on_click=self.start_gen_cube,
+            )
+            self.gen_cube_a_but = InputField(
+                text=&#34;Cube Size&#34;,
+                active=False,
+                y = 0,
+                default_value=&#39;1&#39;,
+            )
+            self.gen_sphere_but = Button(
+                color = color.gray,
+                y = -0.1,
+                scale = (.1,.1),
+                text=&#34;Sphere&#34;,
+                on_click=self.start_gen_sphere,
+            )
+            self.gen_sphera_r_but = InputField(
+                text=&#34;Radius of Sphare&#34;,
+                active=False,
+                y = -0.2,
+                default_value=&#39;1&#39;,
+            )
+            self.gen_sphera_line_but = InputField(
+                active=False,
+                y = -0.3,
+                default_value=&#39;20&#39;,
+            )
+            self.gen_sphera_a_but = InputField(
+                active=False,
+                y = -0.4,
+                default_value=&#39;40&#39;,
+            )
+            self.menu_is_on = True
+    def __unpauseBase(self):
+        &#34;&#34;&#34;function responsibles for disable menu button, base function must be run by all menu button wchich close menu
+        &#34;&#34;&#34;
+        self.gen_cube_but.disable()
+        self.gen_sphere_but.disable()
+        self.gen_cube_a_but.disable()
+        self.gen_sphera_r_but.disable()
+        self.gen_sphera_line_but.disable()
+        self.gen_sphera_a_but.disable()
+        self.Cursor()
+        self.menu_is_on = False
+
+    def start_gen_cube(self):
+        &#34;&#34;&#34;Function responsible for disable menu, and start generating cube
+        &#34;&#34;&#34;
+        gen = Generator(slower=self.slower)
+        a = int(self.gen_cube_a_but.text)
+        do = gen.GenerateCube(a)
+        self.pomel = Pomel(do,slower=self.slower)
+        self.__unpauseBase()
+
+    def start_gen_sphere(self):
+        &#34;&#34;&#34;Funcrion responsible for disable menu, and start generating Sphere
+        &#34;&#34;&#34;
+        gen = Generator(slower=self.slower)
+        do = gen.GenerateSphere(int(self.gen_sphera_r_but.text),int(self.gen_sphera_line_but.text), int(self.gen_sphera_a_but.text))
+        self.pomel = Pomel(do,slower=self.slower)
+        self.__unpauseBase()
+
+    def __pause_input(self, key):
+        &#34;&#34;&#34;Callback of enter keyboard key, allow to pause symulation or exit the game
+        using keyboard user can show menu, reset table, quit game and pause Pomel moves
+        Args:
+            key (str): string name of pressed key
+        &#34;&#34;&#34;
+        if key == &#39;q&#39;:
+            exit()
+        if key == &#39;r&#39;:
+            self.pomel.dropEntity()
+            self.pomel.disable()
+        if key == &#39;m&#39;:
+            if self.pomel is not None:
+                self.pomel.dropEntity()
+                self.pomel.disable()
+            self.menu()
+        if key == &#34;p&#34;:
+            self.pomel.ChangePause()</code></pre>
+</details>
 </section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="Game.Game"><code class="flex name class">
+<span>class <span class="ident">Game</span></span>
+<span>(</span><span>slower)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Main class Of the game, they initialize all of Entities</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>do</code></strong> :&ensp;<code>list[<a title="Game.Move" href="#Game.Move">Move</a>]</code></dt>
+<dd>list of moves to get by Pomel class</dd>
+<dt><strong><code>slower</code></strong> :&ensp;<code>int</code></dt>
+<dd>multiply quantity of elements in printing part</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Game():
+    def __init__(self, slower) -&gt; None:
+        &#34;&#34;&#34;Main class Of the game, they initialize all of Entities
 
+        Args:
+            do (list[Move]): list of moves to get by Pomel class
+            slower (int): multiply quantity of elements in printing part
+        &#34;&#34;&#34;
+        self.slower = slower
+        self.do = []
+        random.seed(0)
+        self.app = Ursina()
+        Entity.default_shader = lit_with_shadows_shader
+        self.ground = Entity(model=&#39;plane&#39;, collider=&#39;box&#39;, scale=64, texture=&#39;grass&#39;, texture_scale=(4,4))
+        self.table = Entity(model=&#39;plane&#39;, collider=&#39;box&#39;, color=color.gray,position=(1,1,1),scale=(4,0.1,4))
 
-          </div>
-          
-        </div>
-      </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-<h1 class="logo"><a href="index.html">POiGK_2024</a></h1>
+        self.editor_camera = EditorCamera(enabled=False, ignore_paused=True)
+        self.player = FirstPersonController(model=&#39;cube&#39;,
+                                        z=-10, color=color.orange, origin_y=-0.5, speed=8, collider=&#39;box&#39;)
+        self.player.collider = BoxCollider(self.player, Vec3(0,1,0), Vec3(1,2,1))
+        self.pause_handler = Entity(ignore_paused=True, input=self.__pause_input)
+        self.sun = DirectionalLight()
+        self.sun.look_at(Vec3(1,-1,-1))
+        self.sky = Sky()
+        self.pomel = None
+        self.menu_is_on =False
+        self.menu()
+        self.app.run()
 
+    def Cursor(self):
+        &#34;&#34;&#34;Enable / Disable Cursor
+        &#34;&#34;&#34;
+        self.editor_camera.enabled = not self.editor_camera.enabled
+        self.player.visible_self = self.editor_camera.enabled
+        mouse.locked = not self.editor_camera.enabled
+        self.editor_camera.position = self.player.position
 
+    def menu(self):
+        &#34;&#34;&#34;function Wchich is responsible for generate menu view
+        &#34;&#34;&#34;
+        if (not self.menu_is_on):
+            self.Cursor()
+            self.gen_cube_but = Button(
+                color = color.gray,
+                y = 0.1,
+                scale = (.1,.1),
+                text=&#34;Cube&#34;,
+                on_click=self.start_gen_cube,
+            )
+            self.gen_cube_a_but = InputField(
+                text=&#34;Cube Size&#34;,
+                active=False,
+                y = 0,
+                default_value=&#39;1&#39;,
+            )
+            self.gen_sphere_but = Button(
+                color = color.gray,
+                y = -0.1,
+                scale = (.1,.1),
+                text=&#34;Sphere&#34;,
+                on_click=self.start_gen_sphere,
+            )
+            self.gen_sphera_r_but = InputField(
+                text=&#34;Radius of Sphare&#34;,
+                active=False,
+                y = -0.2,
+                default_value=&#39;1&#39;,
+            )
+            self.gen_sphera_line_but = InputField(
+                active=False,
+                y = -0.3,
+                default_value=&#39;20&#39;,
+            )
+            self.gen_sphera_a_but = InputField(
+                active=False,
+                y = -0.4,
+                default_value=&#39;40&#39;,
+            )
+            self.menu_is_on = True
+    def __unpauseBase(self):
+        &#34;&#34;&#34;function responsibles for disable menu button, base function must be run by all menu button wchich close menu
+        &#34;&#34;&#34;
+        self.gen_cube_but.disable()
+        self.gen_sphere_but.disable()
+        self.gen_cube_a_but.disable()
+        self.gen_sphera_r_but.disable()
+        self.gen_sphera_line_but.disable()
+        self.gen_sphera_a_but.disable()
+        self.Cursor()
+        self.menu_is_on = False
 
+    def start_gen_cube(self):
+        &#34;&#34;&#34;Function responsible for disable menu, and start generating cube
+        &#34;&#34;&#34;
+        gen = Generator(slower=self.slower)
+        a = int(self.gen_cube_a_but.text)
+        do = gen.GenerateCube(a)
+        self.pomel = Pomel(do,slower=self.slower)
+        self.__unpauseBase()
 
+    def start_gen_sphere(self):
+        &#34;&#34;&#34;Funcrion responsible for disable menu, and start generating Sphere
+        &#34;&#34;&#34;
+        gen = Generator(slower=self.slower)
+        do = gen.GenerateSphere(int(self.gen_sphera_r_but.text),int(self.gen_sphera_line_but.text), int(self.gen_sphera_a_but.text))
+        self.pomel = Pomel(do,slower=self.slower)
+        self.__unpauseBase()
 
+    def __pause_input(self, key):
+        &#34;&#34;&#34;Callback of enter keyboard key, allow to pause symulation or exit the game
+        using keyboard user can show menu, reset table, quit game and pause Pomel moves
+        Args:
+            key (str): string name of pressed key
+        &#34;&#34;&#34;
+        if key == &#39;q&#39;:
+            exit()
+        if key == &#39;r&#39;:
+            self.pomel.dropEntity()
+            self.pomel.disable()
+        if key == &#39;m&#39;:
+            if self.pomel is not None:
+                self.pomel.dropEntity()
+                self.pomel.disable()
+            self.menu()
+        if key == &#34;p&#34;:
+            self.pomel.ChangePause()</code></pre>
+</details>
+<h3>Methods</h3>
+<dl>
+<dt id="Game.Game.Cursor"><code class="name flex">
+<span>def <span class="ident">Cursor</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Enable / Disable Cursor</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def Cursor(self):
+    &#34;&#34;&#34;Enable / Disable Cursor
+    &#34;&#34;&#34;
+    self.editor_camera.enabled = not self.editor_camera.enabled
+    self.player.visible_self = self.editor_camera.enabled
+    mouse.locked = not self.editor_camera.enabled
+    self.editor_camera.position = self.player.position</code></pre>
+</details>
+</dd>
+<dt id="Game.Game.menu"><code class="name flex">
+<span>def <span class="ident">menu</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>function Wchich is responsible for generate menu view</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def menu(self):
+    &#34;&#34;&#34;function Wchich is responsible for generate menu view
+    &#34;&#34;&#34;
+    if (not self.menu_is_on):
+        self.Cursor()
+        self.gen_cube_but = Button(
+            color = color.gray,
+            y = 0.1,
+            scale = (.1,.1),
+            text=&#34;Cube&#34;,
+            on_click=self.start_gen_cube,
+        )
+        self.gen_cube_a_but = InputField(
+            text=&#34;Cube Size&#34;,
+            active=False,
+            y = 0,
+            default_value=&#39;1&#39;,
+        )
+        self.gen_sphere_but = Button(
+            color = color.gray,
+            y = -0.1,
+            scale = (.1,.1),
+            text=&#34;Sphere&#34;,
+            on_click=self.start_gen_sphere,
+        )
+        self.gen_sphera_r_but = InputField(
+            text=&#34;Radius of Sphare&#34;,
+            active=False,
+            y = -0.2,
+            default_value=&#39;1&#39;,
+        )
+        self.gen_sphera_line_but = InputField(
+            active=False,
+            y = -0.3,
+            default_value=&#39;20&#39;,
+        )
+        self.gen_sphera_a_but = InputField(
+            active=False,
+            y = -0.4,
+            default_value=&#39;40&#39;,
+        )
+        self.menu_is_on = True</code></pre>
+</details>
+</dd>
+<dt id="Game.Game.start_gen_cube"><code class="name flex">
+<span>def <span class="ident">start_gen_cube</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Function responsible for disable menu, and start generating cube</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def start_gen_cube(self):
+    &#34;&#34;&#34;Function responsible for disable menu, and start generating cube
+    &#34;&#34;&#34;
+    gen = Generator(slower=self.slower)
+    a = int(self.gen_cube_a_but.text)
+    do = gen.GenerateCube(a)
+    self.pomel = Pomel(do,slower=self.slower)
+    self.__unpauseBase()</code></pre>
+</details>
+</dd>
+<dt id="Game.Game.start_gen_sphere"><code class="name flex">
+<span>def <span class="ident">start_gen_sphere</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Funcrion responsible for disable menu, and start generating Sphere</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def start_gen_sphere(self):
+    &#34;&#34;&#34;Funcrion responsible for disable menu, and start generating Sphere
+    &#34;&#34;&#34;
+    gen = Generator(slower=self.slower)
+    do = gen.GenerateSphere(int(self.gen_sphera_r_but.text),int(self.gen_sphera_line_but.text), int(self.gen_sphera_a_but.text))
+    self.pomel = Pomel(do,slower=self.slower)
+    self.__unpauseBase()</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="Game.Generator"><code class="flex name class">
+<span>class <span class="ident">Generator</span></span>
+<span>(</span><span>slower)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Generator Objects Ready to print by 3D Priner</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Generator():
+    &#34;&#34;&#34;Generator Objects Ready to print by 3D Priner
+    &#34;&#34;&#34;
+    def __init__(self, slower) -&gt; None:
+        self.slower = slower
 
+    def GenerateCube(self, a) -&gt;list[Move]:
+        &#34;&#34;&#34;Function generates Moves to create Cube 
 
+        Args:
+            a (int): size of Cube
 
-<h3>Navigation</h3>
+        Returns:
+            list[Move]: moves list
+        &#34;&#34;&#34;
+        YOFFSET = 1.15
+        XZOFFSET = 1
+        do = []
+        lastMove= Move()
+        # Generowanie dolnej ściany
+        for i in range(0, a * self.slower):
+            for j in range(0, a * self.slower):
+                move = Move((i / self.slower,  YOFFSET, j / self.slower))
+                do.append(move)
 
-<div class="relations">
-<h3>Related Topics</h3>
-<ul>
-  <li><a href="index.html">Documentation overview</a><ul>
-  </ul></li>
+        for i in range(0, a * self.slower):
+            for _ in range(0, a * self.slower):
+                move = Move((lastMove.x + XZOFFSET / self.slower, (i / self.slower)+ YOFFSET, lastMove.z))
+                do.append(move)
+                lastMove = move
+            for _ in range(0, a * self.slower):
+                move = Move((lastMove.x, (i / self.slower)+ YOFFSET, lastMove.z + XZOFFSET / self.slower))
+                do.append(move)
+                lastMove = move
+            for _ in range(0, a * self.slower):
+                move = Move((lastMove.x - XZOFFSET / self.slower,(i / self.slower)+ YOFFSET, lastMove.z))
+                do.append(move)
+                lastMove = move
+            for _ in range(0, a * self.slower):
+                move = Move((lastMove.x, (i / self.slower)+ YOFFSET, lastMove.z - XZOFFSET / self.slower))
+                do.append(move)
+                lastMove = move
+
+        # Generowanie górnej ściany
+        for i in range(0, a * self.slower + 1):
+            for j in range(0, a * self.slower +1):
+                move = Move(((i / self.slower), a+YOFFSET, j / self.slower))
+                do.append(move)
+
+        return do
+    def GenerateSphere(self, radius: float, num_layers: int, num_points_per_layer: int) -&gt; list[Move]:
+        &#34;&#34;&#34;Function to generate Moves list to create a Sphare
+
+        Args:
+            radius (float): radius of sphere
+            num_layers (int): nomber of layers in Y
+            num_points_per_layer (int): num of points in layer XZ
+
+        Returns:
+            list[Move]: moves list
+        &#34;&#34;&#34;
+        YOFFSET = 1.15
+        do = []
+        for i in range(num_layers):
+            phi = math.pi * (i / (num_layers - 1))  # Ustal phi na podstawie warstwy
+            for j in range(num_points_per_layer):
+                theta = 2 * math.pi * (j / num_points_per_layer)
+                x = radius * math.sin(phi) * math.cos(theta) +1
+                y = radius * math.cos(phi) + YOFFSET+1
+                z = radius * math.sin(phi) * math.sin(theta) + 1
+                move = Move((x, y, z))
+                do.append(move)
+        do.reverse()
+        return do</code></pre>
+</details>
+<h3>Methods</h3>
+<dl>
+<dt id="Game.Generator.GenerateCube"><code class="name flex">
+<span>def <span class="ident">GenerateCube</span></span>(<span>self, a) ‑> list[<a title="Game.Move" href="#Game.Move">Move</a>]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Function generates Moves to create Cube </p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>a</code></strong> :&ensp;<code>int</code></dt>
+<dd>size of Cube</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>list[<a title="Game.Move" href="#Game.Move">Move</a>]</code></dt>
+<dd>moves list</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def GenerateCube(self, a) -&gt;list[Move]:
+    &#34;&#34;&#34;Function generates Moves to create Cube 
+
+    Args:
+        a (int): size of Cube
+
+    Returns:
+        list[Move]: moves list
+    &#34;&#34;&#34;
+    YOFFSET = 1.15
+    XZOFFSET = 1
+    do = []
+    lastMove= Move()
+    # Generowanie dolnej ściany
+    for i in range(0, a * self.slower):
+        for j in range(0, a * self.slower):
+            move = Move((i / self.slower,  YOFFSET, j / self.slower))
+            do.append(move)
+
+    for i in range(0, a * self.slower):
+        for _ in range(0, a * self.slower):
+            move = Move((lastMove.x + XZOFFSET / self.slower, (i / self.slower)+ YOFFSET, lastMove.z))
+            do.append(move)
+            lastMove = move
+        for _ in range(0, a * self.slower):
+            move = Move((lastMove.x, (i / self.slower)+ YOFFSET, lastMove.z + XZOFFSET / self.slower))
+            do.append(move)
+            lastMove = move
+        for _ in range(0, a * self.slower):
+            move = Move((lastMove.x - XZOFFSET / self.slower,(i / self.slower)+ YOFFSET, lastMove.z))
+            do.append(move)
+            lastMove = move
+        for _ in range(0, a * self.slower):
+            move = Move((lastMove.x, (i / self.slower)+ YOFFSET, lastMove.z - XZOFFSET / self.slower))
+            do.append(move)
+            lastMove = move
+
+    # Generowanie górnej ściany
+    for i in range(0, a * self.slower + 1):
+        for j in range(0, a * self.slower +1):
+            move = Move(((i / self.slower), a+YOFFSET, j / self.slower))
+            do.append(move)
+
+    return do</code></pre>
+</details>
+</dd>
+<dt id="Game.Generator.GenerateSphere"><code class="name flex">
+<span>def <span class="ident">GenerateSphere</span></span>(<span>self, radius: float, num_layers: int, num_points_per_layer: int) ‑> list[<a title="Game.Move" href="#Game.Move">Move</a>]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Function to generate Moves list to create a Sphare</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>radius</code></strong> :&ensp;<code>float</code></dt>
+<dd>radius of sphere</dd>
+<dt><strong><code>num_layers</code></strong> :&ensp;<code>int</code></dt>
+<dd>nomber of layers in Y</dd>
+<dt><strong><code>num_points_per_layer</code></strong> :&ensp;<code>int</code></dt>
+<dd>num of points in layer XZ</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>list[<a title="Game.Move" href="#Game.Move">Move</a>]</code></dt>
+<dd>moves list</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def GenerateSphere(self, radius: float, num_layers: int, num_points_per_layer: int) -&gt; list[Move]:
+    &#34;&#34;&#34;Function to generate Moves list to create a Sphare
+
+    Args:
+        radius (float): radius of sphere
+        num_layers (int): nomber of layers in Y
+        num_points_per_layer (int): num of points in layer XZ
+
+    Returns:
+        list[Move]: moves list
+    &#34;&#34;&#34;
+    YOFFSET = 1.15
+    do = []
+    for i in range(num_layers):
+        phi = math.pi * (i / (num_layers - 1))  # Ustal phi na podstawie warstwy
+        for j in range(num_points_per_layer):
+            theta = 2 * math.pi * (j / num_points_per_layer)
+            x = radius * math.sin(phi) * math.cos(theta) +1
+            y = radius * math.cos(phi) + YOFFSET+1
+            z = radius * math.sin(phi) * math.sin(theta) + 1
+            move = Move((x, y, z))
+            do.append(move)
+    do.reverse()
+    return do</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="Game.Move"><code class="flex name class">
+<span>class <span class="ident">Move</span></span>
+<span>(</span><span>position=(0, 0, 0), only_move=False)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Represents a move in GCode.</p>
+<p>Initialize Move with position and only_move flag.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Move:
+    &#34;&#34;&#34;Represents a move in GCode.&#34;&#34;&#34;
+
+    def __init__(self, position=(0, 0, 0), only_move=False):
+        &#34;&#34;&#34;Initialize Move with position and only_move flag.&#34;&#34;&#34;
+        self.x: float = position[0]
+        self.y: float = position[1]
+        self.z: float = position[2]
+        self.only_move = only_move
+
+    def __str__(self) -&gt; str:
+        &#34;&#34;&#34;Return string representation of the move.&#34;&#34;&#34;
+        return f&#34;x: {self.x}, y: {self.y}, z: {self.z}, OnlyMove: {self.only_move}&#34;
+
+    def get_position(self):
+        &#34;&#34;&#34;Get the current position as a tuple.&#34;&#34;&#34;
+        return self.x, self.y, self.z
+
+    def change_x(self, delta_x):
+        &#34;&#34;&#34;Change the X coordinate by delta_x.&#34;&#34;&#34;
+        self.x += delta_x
+
+    def change_y(self, delta_y):
+        &#34;&#34;&#34;Change the Y coordinate by delta_y.&#34;&#34;&#34;
+        self.y += delta_y
+
+    def change_z(self, delta_z):
+        &#34;&#34;&#34;Change the Z coordinate by delta_z.&#34;&#34;&#34;
+        self.z += delta_z</code></pre>
+</details>
+<h3>Methods</h3>
+<dl>
+<dt id="Game.Move.change_x"><code class="name flex">
+<span>def <span class="ident">change_x</span></span>(<span>self, delta_x)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Change the X coordinate by delta_x.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def change_x(self, delta_x):
+    &#34;&#34;&#34;Change the X coordinate by delta_x.&#34;&#34;&#34;
+    self.x += delta_x</code></pre>
+</details>
+</dd>
+<dt id="Game.Move.change_y"><code class="name flex">
+<span>def <span class="ident">change_y</span></span>(<span>self, delta_y)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Change the Y coordinate by delta_y.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def change_y(self, delta_y):
+    &#34;&#34;&#34;Change the Y coordinate by delta_y.&#34;&#34;&#34;
+    self.y += delta_y</code></pre>
+</details>
+</dd>
+<dt id="Game.Move.change_z"><code class="name flex">
+<span>def <span class="ident">change_z</span></span>(<span>self, delta_z)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Change the Z coordinate by delta_z.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def change_z(self, delta_z):
+    &#34;&#34;&#34;Change the Z coordinate by delta_z.&#34;&#34;&#34;
+    self.z += delta_z</code></pre>
+</details>
+</dd>
+<dt id="Game.Move.get_position"><code class="name flex">
+<span>def <span class="ident">get_position</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Get the current position as a tuple.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_position(self):
+    &#34;&#34;&#34;Get the current position as a tuple.&#34;&#34;&#34;
+    return self.x, self.y, self.z</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="Game.Pomel"><code class="flex name class">
+<span>class <span class="ident">Pomel</span></span>
+<span>(</span><span>do: list[<a title="Game.Move" href="#Game.Move">Move</a>], slower, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Pomel class is responsible for Move Pomel Model and Generate printing efect</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>do</code></strong></dt>
+<dd>(list[Move]): moves lists</dd>
+<dt><strong><code>slower</code></strong></dt>
+<dd>(int): change print resolution</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Pomel(Entity):
+    &#34;&#34;&#34;Pomel class is responsible for Move Pomel Model and Generate printing efect
+
+    Args:
+        do: (list[Move]): moves lists
+        slower: (int): change print resolution
+    &#34;&#34;&#34;
+    def __init__(self,do:list[Move],slower, **kwargs):
+        self.frames = 0
+        self.do = do
+        self.il = 0
+        self.speedDivision = 2
+        self.slower = slower
+        self.pause = False
+        self.entitis: list[Entity] = []
+        super().__init__(model=&#39;cube&#39;, position=(0.5, 1.15,0.5),
+                                    scale=(.1,.1,.1), origin_z=0, color=color.red, on_cooldown=False)
+    
+    def ChangePause(self):
+        &#34;&#34;&#34;change pause state
+        &#34;&#34;&#34;
+        self.pause = not self.pause
+
+    def dropEntity(self):
+        &#34;&#34;&#34;Delete printed items func
+        &#34;&#34;&#34;
+        for e in self.entitis:
+            e.disable()
+
+    def update(self):
+        &#34;&#34;&#34;Function called by ursina engine. They change position of Pomel and print Cube
+        &#34;&#34;&#34;
+        if not self.pause:
+            if self.frames &gt; self.speedDivision:
+                if len(self.do) &gt; self.il:
+                    self.set_position(self.do[self.il].get_position())
+                    if not self.do[self.il].only_move:
+                        pos = self.position
+                        pos[0] += 0
+                        pos[1] -= 0.1
+                        pos[2] += 0
+                        self.entitis.append(Entity(model=&#39;cube&#39;, position=(pos), scale=(1/self.slower,1/self.slower,1/self.slower),color=color.white))
+                    self.il+=1
+                else:
+                    self.disable()
+                self.frames=0
+            self.frames+=1</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>ursina.entity.Entity</li>
+<li>panda3d.core.NodePath</li>
+<li>dtoolconfig.DTOOL_SUPER_BASE</li>
 </ul>
+<h3>Methods</h3>
+<dl>
+<dt id="Game.Pomel.ChangePause"><code class="name flex">
+<span>def <span class="ident">ChangePause</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>change pause state</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def ChangePause(self):
+    &#34;&#34;&#34;change pause state
+    &#34;&#34;&#34;
+    self.pause = not self.pause</code></pre>
+</details>
+</dd>
+<dt id="Game.Pomel.dropEntity"><code class="name flex">
+<span>def <span class="ident">dropEntity</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Delete printed items func</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def dropEntity(self):
+    &#34;&#34;&#34;Delete printed items func
+    &#34;&#34;&#34;
+    for e in self.entitis:
+        e.disable()</code></pre>
+</details>
+</dd>
+<dt id="Game.Pomel.update"><code class="name flex">
+<span>def <span class="ident">update</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Function called by ursina engine. They change position of Pomel and print Cube</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def update(self):
+    &#34;&#34;&#34;Function called by ursina engine. They change position of Pomel and print Cube
+    &#34;&#34;&#34;
+    if not self.pause:
+        if self.frames &gt; self.speedDivision:
+            if len(self.do) &gt; self.il:
+                self.set_position(self.do[self.il].get_position())
+                if not self.do[self.il].only_move:
+                    pos = self.position
+                    pos[0] += 0
+                    pos[1] -= 0.1
+                    pos[2] += 0
+                    self.entitis.append(Entity(model=&#39;cube&#39;, position=(pos), scale=(1/self.slower,1/self.slower,1/self.slower),color=color.white))
+                self.il+=1
+            else:
+                self.disable()
+            self.frames=0
+        self.frames+=1</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
 </div>
-<search id="searchbox" style="display: none" role="search">
-  <h3 id="searchlabel">Quick search</h3>
-    <div class="searchformwrapper">
-    <form class="search" action="search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
-      <input type="submit" value="Go" />
-    </form>
-    </div>
-</search>
-<script>document.getElementById('searchbox').style.display = "block"</script>
-
-
-
-
-
-
-
-
-        </div>
-      </div>
-      <div class="clearer"></div>
-    </div>
-    <div class="footer">
-      &#169;2024, Powała Krajewski.
-      
-      |
-      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 7.3.7</a>
-      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 0.7.16</a>
-      
-      |
-      <a href="_sources/Game.rst.txt"
-          rel="nofollow">Page source</a>
-    </div>
-
-    
-
-    
-  </body>
-</html>
+<ul id="index">
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="Game.Game" href="#Game.Game">Game</a></code></h4>
+<ul class="">
+<li><code><a title="Game.Game.Cursor" href="#Game.Game.Cursor">Cursor</a></code></li>
+<li><code><a title="Game.Game.menu" href="#Game.Game.menu">menu</a></code></li>
+<li><code><a title="Game.Game.start_gen_cube" href="#Game.Game.start_gen_cube">start_gen_cube</a></code></li>
+<li><code><a title="Game.Game.start_gen_sphere" href="#Game.Game.start_gen_sphere">start_gen_sphere</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="Game.Generator" href="#Game.Generator">Generator</a></code></h4>
+<ul class="">
+<li><code><a title="Game.Generator.GenerateCube" href="#Game.Generator.GenerateCube">GenerateCube</a></code></li>
+<li><code><a title="Game.Generator.GenerateSphere" href="#Game.Generator.GenerateSphere">GenerateSphere</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="Game.Move" href="#Game.Move">Move</a></code></h4>
+<ul class="">
+<li><code><a title="Game.Move.change_x" href="#Game.Move.change_x">change_x</a></code></li>
+<li><code><a title="Game.Move.change_y" href="#Game.Move.change_y">change_y</a></code></li>
+<li><code><a title="Game.Move.change_z" href="#Game.Move.change_z">change_z</a></code></li>
+<li><code><a title="Game.Move.get_position" href="#Game.Move.get_position">get_position</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="Game.Pomel" href="#Game.Pomel">Pomel</a></code></h4>
+<ul class="">
+<li><code><a title="Game.Pomel.ChangePause" href="#Game.Pomel.ChangePause">ChangePause</a></code></li>
+<li><code><a title="Game.Pomel.dropEntity" href="#Game.Pomel.dropEntity">dropEntity</a></code></li>
+<li><code><a title="Game.Pomel.update" href="#Game.Pomel.update">update</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.10.0</a>.</p>
+</footer>
+</body>
