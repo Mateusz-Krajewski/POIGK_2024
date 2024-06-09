@@ -20,7 +20,6 @@ release = '1.0'
 
 extensions = [
     "sphinx.ext.autodoc",
-    'rst2pdf.pdfbuilder',
     ]
 
 templates_path = ['_templates']
