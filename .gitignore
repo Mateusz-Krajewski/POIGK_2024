@@ -2,3 +2,5 @@ __pycache__
 __pycache__/*
 *.pyc
 .pyc
+docs/_build
+docs/_static
