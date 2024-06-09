@@ -7,6 +7,12 @@ from Pomel import Pomel
 
 class Game():
     def __init__(self, do, slower) -> None:
+        """Main class Of the game, they initialize all of Entities
+
+        Args:
+            do (list[Move]): list of moves to get by Pomel class
+            slower (int): multiply quantity of elements in printing part
+        """
         self.slower = slower
         self.do = do
         random.seed(0)
@@ -29,6 +35,11 @@ class Game():
 
 
     def __pause_input(self, key):
+        """Callback of enter keyboard key, allow to pause symulation or exit the game
+
+        Args:
+            key (str): string name of pressed key
+        """
         if key == 'tab':    # press tab to toggle edit/play mode
             self.editor_camera.enabled = not self.editor_camera.enabled
 
