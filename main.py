@@ -10,4 +10,4 @@ SLOWER = 10
 ###
 
 if __name__ == "__main__":
-    Game(SLOWER)
+    Game(SLOWER, 1.15, 2)
