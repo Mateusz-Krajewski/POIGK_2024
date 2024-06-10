@@ -78,7 +78,7 @@ class Generator():
             for j in range(num_points_per_layer):
                 theta = 2 * math.pi * (j / num_points_per_layer)
                 x = radius * math.sin(phi) * math.cos(theta) + self.XZOFFSET
-                y = radius * math.cos(phi) + YOFFSET+1
+                y = radius * math.cos(phi) + YOFFSET + 1*radius
                 z = radius * math.sin(phi) * math.sin(theta) + self.XZOFFSET
                 move = Move((x, y, z))
                 do.append(move)

@@ -2,7 +2,7 @@ import os
 import sys
 import random
 
-from ursina import *  # pylint: disable=all
+from ursina import *
 from ursina.shaders import lit_with_shadows_shader
 from ursina.prefabs.first_person_controller import FirstPersonController
 
@@ -14,11 +14,19 @@ from Generator import Generator
 
 class Game():
     def __init__(self, slower,YOFFSET, XZOFFSET) -> None:
-        """Main class Of the game, they initialize all of Entities
+        """Main class Of the game:
+            - Initialize Groud,
+            - Initialize Table
+            - Initialize Player, Camera, and Player Colision
+            - Initialize keyPress Handler
+            - Initialize Sun
+            - Open Menu
 
         Args:
             do (list[Move]): list of moves to get by Pomel class
             slower (int): multiply quantity of elements in printing part
+            YOFFSET (float): table Y position offset to put print on table
+            XZOFFSET (float): table XZ position offset to centrilize print
         """
         self.slower = slower
         self.do = []
@@ -45,7 +53,9 @@ class Game():
         self.app.run()
 
     def Cursor(self):
-        """Enable / Disable Cursor
+        """
+        Function Enable or disable Player cursor,
+        allow player to choose position from menu or move camera
         """
         self.editor_camera.enabled = not self.editor_camera.enabled
         self.player.visible_self = self.editor_camera.enabled
@@ -53,7 +63,8 @@ class Game():
         self.editor_camera.position = self.player.position
 
     def menu(self):
-        """function Wchich is responsible for generate menu view
+        """function used to display menu,
+        print buttons and InputFields,
         """
         if (not self.menu_is_on):
             self.Cursor()
@@ -98,9 +109,10 @@ class Game():
             self.__unpauseBase()
             self.pomel.enable()
             self.pomel.enableEntity()
+
     def __unpauseBase(self):
         """function responsibles for disable menu button,
-        base function must be run by all menu button wchich close menu
+        disable every button and enable cursor 
         """
         self.gen_cube_but.disable()
         self.gen_sphere_but.disable()
@@ -112,7 +124,7 @@ class Game():
         self.menu_is_on = False
 
     def start_gen_cube(self):
-        """Function responsible for disable menu, and start generating cube
+        """read data from menu fields and generate Cube with given arguments
         """
         a = int(self.gen_cube_a_but.text)
         do = self.gen.GenerateCube(a)
@@ -120,15 +132,19 @@ class Game():
         self.__unpauseBase()
 
     def start_gen_sphere(self):
-        """Funcrion responsible for disable menu, and start generating Sphere
+        """read data from menu fields and generate Sphare with given arguments
         """
         do = self.gen.GenerateSphere(int(self.gen_sphera_r_but.text),int(self.gen_sphera_line_but.text), int(self.gen_sphera_a_but.text))
         self.pomel = Pomel(do,slower=self.slower)
         self.__unpauseBase()
 
     def __pause_input(self, key):
-        """Callback of enter keyboard key, allow to pause symulation or exit the game
-        using keyboard user can show menu, reset table, quit game and pause Pomel moves
+        """
+        Callback for pressed Keyboard key:
+            - q: Quit the game
+            - r: Remove Object from table and Pomel
+            - m: Pause print and open Menu, second push unpause print
+            - p: Pause/Unpause print
         Args:
             key (str): string name of pressed key
         """
