@@ -2,6 +2,7 @@
 Aplikacja Symulująca działanie drukarki 3d
 
 ![View](resources/screen.png)
+![View](resources/screen2.png)
 
 Aplikacja umożliwia:
 - zmiane położenia kamery za pomocą myszki i guzików wsad
