@@ -14,20 +14,21 @@ from Generator import Generator
 
 class Game():
     """Main class Of the game:
-            - Initialize Groud,
-            - Initialize Table
-            - Initialize Player, Camera, and Player Colision
-            - Initialize keyPress Handler
-            - Initialize Sun
-            - Open Menu
+        - Initialize Groud,
+        - Initialize Table
+        - Initialize Player, Camera, and Player Colision
+        - Initialize keyPress Handler
+        - Initialize Sun
+        - Open Menu
+    """
+    def __init__(self, slower,YOFFSET, XZOFFSET) -> None:
+        """_summary_
 
         Args:
-            do (list[Move]): list of moves to get by Pomel class
             slower (int): multiply quantity of elements in printing part
             YOFFSET (float): table Y position offset to put print on table
             XZOFFSET (float): table XZ position offset to centrilize print
-    """
-    def __init__(self, slower,YOFFSET, XZOFFSET) -> None:
+        """
         self.slower = slower
         self.do = []
         self.gen = Generator(slower, YOFFSET, XZOFFSET)
@@ -53,8 +54,7 @@ class Game():
         self.app.run()
 
     def Cursor(self):
-        """
-        Function Enable or disable Player cursor,
+        """Function Enable or disable Player cursor,
         allow player to choose position from menu or move camera
         """
         self.editor_camera.enabled = not self.editor_camera.enabled
@@ -139,8 +139,7 @@ class Game():
         self.unpauseBase()
 
     def pause_input(self, key):
-        """
-        Callback for pressed Keyboard key:
+        """Callback for pressed Keyboard key:
             - q: Quit the game
             - r: Remove Object from table and Pomel
             - m: Pause print and open Menu, second push unpause print

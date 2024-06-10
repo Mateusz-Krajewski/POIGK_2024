@@ -9,5 +9,7 @@ from Game import Game  # pylint: disable=all
 SLOWER = 10
 ###
 
+"""Main Game file
+"""
 if __name__ == "__main__":
     Game(SLOWER, 1.15, 2)
