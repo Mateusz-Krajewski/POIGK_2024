@@ -2,6 +2,11 @@ __pycache__
 __pycache__/*
 *.pyc
 .pyc
-docs/_build
-docs/_static
 html/
+docs/*
+
+!docs/Makefile
+!docs/make.bat
+!docs/index.rst
+!docs/conf.py
+!docs/requirements.txt
