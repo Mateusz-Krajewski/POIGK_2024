@@ -90,6 +90,10 @@ class Game():
                 default_value='40',
             )
             self.menu_is_on = True
+        else:
+            self.__unpauseBase()
+            self.pomel.enable()
+            self.pomel.enableEntity()
     def __unpauseBase(self):
         """function responsibles for disable menu button, base function must be run by all menu button wchich close menu
         """

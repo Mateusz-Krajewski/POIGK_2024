@@ -33,6 +33,11 @@ class Pomel(Entity):
         """
         for e in self.entitis:
             e.disable()
+    def enableEntity(self):
+        """Enable printed items
+        """
+        for e in self.entitis:
+            e.enable()
 
     def update(self):
         """Function called by ursina engine. They change position of Pomel and print Cube
@@ -46,7 +51,7 @@ class Pomel(Entity):
                         pos[0] += 0
                         pos[1] -= 0.1
                         pos[2] += 0
-                        self.entitis.append(Entity(model='cube', position=(pos), scale=(1/self.slower,1/self.slower,1/self.slower),color=color.white))
+                        self.entitis.append(Entity(model='cube', position=(pos), scale=(1/self.slower,1/self.slower,1/self.slower),color=color.black))
                     self.il+=1
                 else:
                     self.disable()

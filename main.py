@@ -12,7 +12,7 @@ SLOWER = 10
 
 class Main:
     def __init__(self) -> None:
-        self.game = Game(SLOWER,1.15, 2)
+        self.game = Game(SLOWER,1.15, 1)
 
 if __name__ == "__main__":
     Main()
