@@ -9,11 +9,5 @@ from Game import Game
 SLOWER = 10
 ###
 
-
-class Main:
-    def __init__(self) -> None:
-        game = Game(SLOWER)
-
-
 if __name__ == "__main__":
-    Main()
+    Game(SLOWER)
