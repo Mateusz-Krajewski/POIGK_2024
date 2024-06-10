@@ -14,13 +14,6 @@ class Pomel(Entity):
         slower (int): Parameter to change print resolution.
     """
     def __init__(self,do:list[Move],slower, **kwargs):
-        """
-        Initialize the Pomel with a list of moves and a print resolution parameter.
-
-        Args:
-            do (list[Move]): List of moves.
-            slower (int): Parameter to change print resolution.
-        """
         self.frames = 0
         self.do = do
         self.il = 0

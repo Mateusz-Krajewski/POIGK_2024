@@ -8,25 +8,12 @@ class Move:
     """
 
     def __init__(self, position=(0, 0, 0), only_move=False):
-        """
-        Initialize Move with position and only_move flag.
-
-        Args:
-            position (tuple, optional): The (x, y, z) coordinates of the move. Defaults to (0, 0, 0).
-            only_move (bool, optional): Flag indicating if the move is only a movement. Defaults to False.
-        """
         self.x: float = position[0]
         self.y: float = position[1]
         self.z: float = position[2]
         self.only_move = only_move
 
     def __str__(self) -> str:
-        """
-        Return string representation of the move.
-
-        Returns:
-            str: String representation of the move.
-        """
         return f"x: {self.x}, y: {self.y}, z: {self.z}, OnlyMove: {self.only_move}"
 
     def get_position(self):
