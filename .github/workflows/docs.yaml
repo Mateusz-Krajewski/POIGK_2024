@@ -1,9 +1,12 @@
 name: Publish Sphinx Documentation
 
 on:
-  push:
-    branches:
-      - main
+    push:
+      branches:
+        - master
+    pull_request:
+      branches:
+        - master
 
 jobs:
   publish_sphinx_docs:
