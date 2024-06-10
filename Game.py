@@ -11,7 +11,7 @@ from Pomel import Pomel
 from Generator import Generator
 
 class Game():
-    def __init__(self, slower) -> None:
+    def __init__(self, slower,YOFFSET, XZOFFSET) -> None:
         """Main class Of the game, they initialize all of Entities
 
         Args:
@@ -20,11 +20,12 @@ class Game():
         """
         self.slower = slower
         self.do = []
+        self.gen = Generator(slower, YOFFSET, XZOFFSET)
         random.seed(0)
         self.app = Ursina()
         Entity.default_shader = lit_with_shadows_shader
         self.ground = Entity(model='plane', collider='box', scale=64, texture='grass', texture_scale=(4,4))
-        self.table = Entity(model='plane', collider='box', color=color.gray,position=(1,1,1),scale=(4,0.1,4))
+        self.table = Entity(model='plane', collider='box', color=color.gray,position=(1,1,1),scale=(8,0.1,8))
 
         self.editor_camera = EditorCamera(enabled=False, ignore_paused=True)
         self.player = FirstPersonController(model='cube',
@@ -104,17 +105,15 @@ class Game():
     def start_gen_cube(self):
         """Function responsible for disable menu, and start generating cube
         """
-        gen = Generator(slower=self.slower)
         a = int(self.gen_cube_a_but.text)
-        do = gen.GenerateCube(a)
+        do = self.gen.GenerateCube(a)
         self.pomel = Pomel(do,slower=self.slower)
         self.__unpauseBase()
 
     def start_gen_sphere(self):
         """Funcrion responsible for disable menu, and start generating Sphere
         """
-        gen = Generator(slower=self.slower)
-        do = gen.GenerateSphere(int(self.gen_sphera_r_but.text),int(self.gen_sphera_line_but.text), int(self.gen_sphera_a_but.text))
+        do = self.gen.GenerateSphere(int(self.gen_sphera_r_but.text),int(self.gen_sphera_line_but.text), int(self.gen_sphera_a_but.text))
         self.pomel = Pomel(do,slower=self.slower)
         self.__unpauseBase()
 
