@@ -27,4 +27,3 @@ class Move:
     def change_z(self, delta_z):
         """Change the Z coordinate by delta_z."""
         self.z += delta_z
-
