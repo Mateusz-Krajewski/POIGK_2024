@@ -13,8 +13,7 @@ from Pomel import Pomel
 from Generator import Generator
 
 class Game():
-    def __init__(self, slower,YOFFSET, XZOFFSET) -> None:
-        """Main class Of the game:
+    """Main class Of the game:
             - Initialize Groud,
             - Initialize Table
             - Initialize Player, Camera, and Player Colision
@@ -27,7 +26,8 @@ class Game():
             slower (int): multiply quantity of elements in printing part
             YOFFSET (float): table Y position offset to put print on table
             XZOFFSET (float): table XZ position offset to centrilize print
-        """
+    """
+    def __init__(self, slower,YOFFSET, XZOFFSET) -> None:
         self.slower = slower
         self.do = []
         self.gen = Generator(slower, YOFFSET, XZOFFSET)
@@ -43,7 +43,7 @@ class Game():
         self.player = FirstPersonController(model='cube', z=-10, color=color.orange,
                                                 origin_y=-0.5, speed=8, collider='box')
         self.player.collider = BoxCollider(self.player, Vec3(0,1,0), Vec3(1,2,1))
-        self.pause_handler = Entity(ignore_paused=True, input=self.__pause_input)
+        self.pause_handler = Entity(ignore_paused=True, input=self.pause_input)
         self.sun = DirectionalLight()
         self.sun.look_at(Vec3(1,-1,-1))
         self.sky = Sky()
@@ -106,11 +106,11 @@ class Game():
             )
             self.menu_is_on = True
         else:
-            self.__unpauseBase()
+            self.unpauseBase()
             self.pomel.enable()
             self.pomel.enableEntity()
 
-    def __unpauseBase(self):
+    def unpauseBase(self):
         """function responsibles for disable menu button,
         disable every button and enable cursor 
         """
@@ -129,16 +129,16 @@ class Game():
         a = int(self.gen_cube_a_but.text)
         do = self.gen.GenerateCube(a)
         self.pomel = Pomel(do,slower=self.slower)
-        self.__unpauseBase()
+        self.unpauseBase()
 
     def start_gen_sphere(self):
         """read data from menu fields and generate Sphare with given arguments
         """
         do = self.gen.GenerateSphere(int(self.gen_sphera_r_but.text),int(self.gen_sphera_line_but.text), int(self.gen_sphera_a_but.text))
         self.pomel = Pomel(do,slower=self.slower)
-        self.__unpauseBase()
+        self.unpauseBase()
 
-    def __pause_input(self, key):
+    def pause_input(self, key):
         """
         Callback for pressed Keyboard key:
             - q: Quit the game
