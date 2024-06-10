@@ -1,9 +1,9 @@
 import os
 import sys
 
-sys.path.insert(0, os.path.abspath('./code')) 
+sys.path.insert(0, os.path.abspath('./code'))
 
-from Game import Game
+from Game import Game  # pylint: disable=all
 
 ###
 SLOWER = 10

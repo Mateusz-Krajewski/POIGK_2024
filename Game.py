@@ -1,10 +1,12 @@
-import random
-from ursina import Entity, color, Ursina, BoxCollider, Vec3, Button, DirectionalLight, Sky, EditorCamera, mouse, application, InputField
-from ursina.shaders import lit_with_shadows_shader
-from ursina.prefabs.first_person_controller import FirstPersonController
 import os
 import sys
-sys.path.insert(0, os.path.abspath('./code')) 
+import random
+
+from ursina import *  # pylint: disable=all
+from ursina.shaders import lit_with_shadows_shader
+from ursina.prefabs.first_person_controller import FirstPersonController
+
+sys.path.insert(0, os.path.abspath('./code'))
 
 
 from Pomel import Pomel
@@ -24,12 +26,14 @@ class Game():
         random.seed(0)
         self.app = Ursina()
         Entity.default_shader = lit_with_shadows_shader
-        self.ground = Entity(model='plane', collider='box', scale=64, texture='grass', texture_scale=(4,4))
-        self.table = Entity(model='plane', collider='box', color=color.gray,position=(1,1,1),scale=(8,0.1,8))
+        self.ground = Entity(model='plane', collider='box',
+                                    scale=64, texture='grass', texture_scale=(4,4))
+        self.table = Entity(model='plane', collider='box',
+                                    color=color.gray,position=(1,1,1),scale=(8,0.1,8))
 
         self.editor_camera = EditorCamera(enabled=False, ignore_paused=True)
-        self.player = FirstPersonController(model='cube',
-                                        z=-10, color=color.orange, origin_y=-0.5, speed=8, collider='box')
+        self.player = FirstPersonController(model='cube', z=-10, color=color.orange,
+                                                origin_y=-0.5, speed=8, collider='box')
         self.player.collider = BoxCollider(self.player, Vec3(0,1,0), Vec3(1,2,1))
         self.pause_handler = Entity(ignore_paused=True, input=self.__pause_input)
         self.sun = DirectionalLight()
@@ -95,7 +99,8 @@ class Game():
             self.pomel.enable()
             self.pomel.enableEntity()
     def __unpauseBase(self):
-        """function responsibles for disable menu button, base function must be run by all menu button wchich close menu
+        """function responsibles for disable menu button,
+        base function must be run by all menu button wchich close menu
         """
         self.gen_cube_but.disable()
         self.gen_sphere_but.disable()
