@@ -6,13 +6,21 @@ from Move import Move
 from ursina import color, Entity
 
 class Pomel(Entity):
-    """Pomel class is responsible for Move Pomel Model and Generate printing efect
+    """
+    The Pomel class is responsible for moving the Pomel model and generating the printing effect.
 
     Args:
-        do: (list[Move]): moves lists
-        slower: (int): change print resolution
+        do (list[Move]): List of moves.
+        slower (int): Parameter to change print resolution.
     """
     def __init__(self,do:list[Move],slower, **kwargs):
+        """
+        Initialize the Pomel with a list of moves and a print resolution parameter.
+
+        Args:
+            do (list[Move]): List of moves.
+            slower (int): Parameter to change print resolution.
+        """
         self.frames = 0
         self.do = do
         self.il = 0
@@ -24,23 +32,27 @@ class Pomel(Entity):
                                     scale=(.1,.1,.1), origin_z=0, color=color.red, on_cooldown=False)
     
     def ChangePause(self):
-        """change pause state
+        """
+        Toggle the pause state.
         """
         self.pause = not self.pause
 
     def dropEntity(self):
-        """Delete printed items func
+        """
+        Delete printed items.
         """
         for e in self.entitis:
             e.disable()
     def enableEntity(self):
-        """Enable printed items
+        """
+        Enable printed items.
         """
         for e in self.entitis:
             e.enable()
 
     def update(self):
-        """Function called by ursina engine. They change position of Pomel and print Cube
+        """
+        Function called by the Ursina engine to update the position of the Pomel.
         """
         if not self.pause:
             if self.frames > self.speedDivision:

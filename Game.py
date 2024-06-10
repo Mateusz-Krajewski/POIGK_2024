@@ -13,15 +13,14 @@ from Pomel import Pomel
 from Generator import Generator
 
 class Game():
-    """Main class Of the game Initialize Groud, Initialize Table
-        Initialize Player, Camera, and Player Colision, Initialize keyPress Handler
-        Initialize Sun, Open Menu
+    """
+    Main class of the game. Initializes the ground, table, player, camera,
+    player collision, key press handler, sun, and opens the menu.
 
     Args:
-        slower (int): multiply quantity of elements in printing part
-        YOFFSET (float): table Y position offset to put print on table
-        XZOFFSET (float): table XZ position offset to centrilize print
-
+        slower (int): Multiplier for the quantity of elements in the printing part.
+        YOFFSET (float): Y position offset for the table to place print on the table.
+        XZOFFSET (float): X and Z position offset to centralize print.
     """
     def __init__(self, slower,YOFFSET, XZOFFSET) -> None:
         self.slower = slower
@@ -49,8 +48,9 @@ class Game():
         self.app.run()
 
     def Cursor(self):
-        """Function Enable or disable Player cursor,
-        allow player to choose position from menu or move camera
+        """
+        Toggles the player cursor, allowing the player to choose a position
+        from the menu or move the camera.
         """
         self.editor_camera.enabled = not self.editor_camera.enabled
         self.player.visible_self = self.editor_camera.enabled
@@ -58,8 +58,8 @@ class Game():
         self.editor_camera.position = self.player.position
 
     def menu(self):
-        """function used to display menu,
-        print buttons and InputFields,
+        """
+        Displays the menu, prints buttons and input fields.
         """
         if (not self.menu_is_on):
             self.Cursor()
@@ -106,8 +106,8 @@ class Game():
             self.pomel.enableEntity()
 
     def unpauseBase(self):
-        """function responsibles for disable menu button,
-        disable every button and enable cursor 
+        """
+        Disables menu buttons, enables the cursor.
         """
         self.gen_cube_but.disable()
         self.gen_sphere_but.disable()
@@ -119,7 +119,8 @@ class Game():
         self.menu_is_on = False
 
     def start_gen_cube(self):
-        """read data from menu fields and generate Cube with given arguments
+        """
+        Reads data from menu fields and generates a cube with the given arguments.
         """
         a = int(self.gen_cube_a_but.text)
         do = self.gen.GenerateCube(a)
@@ -127,20 +128,23 @@ class Game():
         self.unpauseBase()
 
     def start_gen_sphere(self):
-        """read data from menu fields and generate Sphare with given arguments
+        """
+        Reads data from menu fields and generates a sphere with the given arguments.
         """
         do = self.gen.GenerateSphere(int(self.gen_sphera_r_but.text),int(self.gen_sphera_line_but.text), int(self.gen_sphera_a_but.text))
         self.pomel = Pomel(do,slower=self.slower)
         self.unpauseBase()
 
     def pause_input(self, key):
-        """Callback for pressed Keyboard key
-            - q -  Quit the game
-            - r - Remove Object from table and Pomel
-            - m - Pause print and open Menu, second push unpause print
-            - p -  Pause/Unpause print
+        """
+        Callback for pressed keyboard keys:
+        - 'q' - Quit the game.
+        - 'r' - Remove object from table and Pomel.
+        - 'm' - Pause printing and open menu; second press unpauses printing.
+        - 'p' - Pause/Unpause printing.
+
         Args:
-            key (str): string name of pressed key
+            key (str): Name of the pressed key.
         """
         if key == 'q':
             exit()

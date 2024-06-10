@@ -6,7 +6,13 @@ sys.path.insert(0, os.path.abspath('./code'))
 from Move import Move
 
 class Generator():
-    """Generator Objects Ready to print by 3D Priner
+    """
+    Generator class for creating objects ready to be printed by a 3D printer.
+    
+    Args:
+        slower (int): Multiplier for the quantity of elements in the printing part.
+        YOFFSET (float): Y position offset for the table to place print on the table.
+        XZOFFSET (float): X and Z position offset to centralize print.
     """
     def __init__(self, slower,YOFFSET, XZOFFSET) -> None:
         self.slower = slower
@@ -14,13 +20,14 @@ class Generator():
         self.XZOFFSET = XZOFFSET
 
     def GenerateCube(self, a) ->list[Move]:
-        """Function generates Moves to create Cube 
-
+        """
+        Generates a list of moves to create a cube.
+        
         Args:
-            a (int): size of Cube
-
+            a (int): Size of the cube.
+        
         Returns:
-            list[Move]: moves list
+            list[Move]: List of moves to create the cube.
         """
         do = []
         lastMove= Move()
@@ -61,15 +68,16 @@ class Generator():
         return do
     def GenerateSphere(self, radius: float,
                             num_layers: int, num_points_per_layer: int) -> list[Move]:
-        """Function to generate Moves list to create a Sphare
-
+        """
+        Generates a list of moves to create a sphere.
+        
         Args:
-            radius (float): radius of sphere
-            num_layers (int): nomber of layers in Y
-            num_points_per_layer (int): num of points in layer XZ
-
+            radius (float): Radius of the sphere.
+            num_layers (int): Number of layers in the Y direction.
+            num_points_per_layer (int): Number of points per layer in the XZ plane.
+        
         Returns:
-            list[Move]: moves list
+            list[Move]: List of moves to create the sphere.
         """
         YOFFSET = 1.15
         do = []
