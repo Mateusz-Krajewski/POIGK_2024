@@ -1,0 +1,11 @@
+POIGK_2024
+==========
+
+.. toctree::
+   :maxdepth: 4
+
+   Game
+   Generator
+   Move
+   Pomel
+   main
